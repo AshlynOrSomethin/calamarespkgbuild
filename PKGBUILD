@@ -1,10 +1,10 @@
 # Maintainer: Philip Müller <philm[at]manjaro[dog]org>
 
 pkgname=calamares
-pkgver=3.3.15
+pkgver=3.3.14
 _pkgver=3.3.14
 pkgrel=7
-_commit=aab7db515f88d8d5582cf7bbc788313914ce7982
+#_commit=dff042118682d7685e6fd75a5acd3853f94e5e3d
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
 license=('BSD-2-Clause AND CC0-1.0 AND CC-BY-4.0 AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-3.0-or-later AND MIT')
@@ -18,15 +18,16 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
-source+=(#"$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/calamares-v$pkgver.tar.gz"
-         "$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
-        )
+#source+=(#"$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/calamares-v$pkgver.tar.gz"
+#         "$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
+#        )
+source+=(${pkgname}::"git+${url}/")
 sha256sums=('14e0f22b2778e2e5569fc44df52540bc5848a16df24808bc2b34ff0ccc95bb29')
 
 prepare() {
-	mv ${srcdir}/calamares-${_commit} ${srcdir}/calamares-${pkgver}
+	#mv ${srcdir}/calamares${_commit} ${srcdir}/calamares
 	#mv ${srcdir}/calamares-v${pkgver} ${srcdir}/calamares-${pkgver}
-	cd ${srcdir}/calamares-${pkgver}
+	cd ${srcdir}/calamares
 	
 	# change version
 	sed -i -e "s|$pkgver|$_pkgver|g" CMakeLists.txt
@@ -52,7 +53,7 @@ prepare() {
 }
 
 build() {
-	cd ${srcdir}/calamares-${pkgver}
+	cd ${srcdir}/calamares
 
 	mkdir -p build
 	cd build
@@ -70,7 +71,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/calamares-${pkgver}/build
+	cd ${srcdir}/calamares/build
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../data/manjaro-icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/calamares.svg"
 	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
