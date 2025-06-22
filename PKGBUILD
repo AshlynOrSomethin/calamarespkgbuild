@@ -1,7 +1,7 @@
 # Maintainer: Philip Müller <philm[at]manjaro[dog]org>
 
 pkgname=calamares
-pkgver=3.3.14
+pkgver=3.3.15
 _pkgver=3.3.14
 pkgrel=7
 _commit=aab7db515f88d8d5582cf7bbc788313914ce7982
