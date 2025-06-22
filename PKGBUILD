@@ -8,7 +8,7 @@ _commit=aab7db515f88d8d5582cf7bbc788313914ce7982
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
 license=('BSD-2-Clause AND CC0-1.0 AND CC-BY-4.0 AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-3.0-or-later AND MIT')
-url="https://gitlab.manjaro.org/applications/calamares"
+url="https://github.com/AshlynOrSomethin/calamares"
 depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'solid' 'yaml-cpp' 'kpmcore'
 	'boost-libs' 'ckbcomp' 'hwinfo' 'qt6-svg' 'polkit-qt6'
 	'squashfs-tools' 'libpwquality' 'python')
